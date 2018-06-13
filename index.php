@@ -24,73 +24,73 @@
 
 // Do not load unless Tribe Common is fully loaded and our class does not yet exist.
 if (
-    class_exists('Tribe__Extension')
-    && !class_exists('Tribe__Extension__Example')
+	class_exists( 'Tribe__Extension' )
+	&& ! class_exists( 'Tribe__Extension__Example' )
 ) {
-    /**
-     * Extension main class, class begins loading on init() function.
-     */
-    class Tribe__Extension__Divi_Theme_Compatibility extends Tribe__Extension {
+	/**
+	 * Extension main class, class begins loading on init() function.
+	 */
+	class Tribe__Extension__Divi_Theme_Compatibility extends Tribe__Extension {
 
-        /**
-         * Setup the Extension's properties.
-         *
-         * This always executes even if the required plugins are not present.
-         */
-        public function construct() {
-            $this->add_required_plugin('Tribe__Events__Main');
-            $this->set_url('https://theeventscalendar.com/extensions/elegant-themes-divi-theme-compatibility/');
-            $this->set_version( '1.1.0' );
-        }
+		/**
+		 * Setup the Extension's properties.
+		 *
+		 * This always executes even if the required plugins are not present.
+		 */
+		public function construct() {
+			$this->add_required_plugin( 'Tribe__Events__Main' );
+			$this->set_url( 'https://theeventscalendar.com/extensions/elegant-themes-divi-theme-compatibility/' );
+			$this->set_version( '1.1.0' );
+		}
 
-        /**
-         * Extension initialization and hooks.
-         */
-        public function init() {
-            if (!is_admin()) {
-                add_filter('parse_query', array($this, 'remove_et_custom_posts_per_page'), 100);
-            }
+		/**
+		 * Extension initialization and hooks.
+		 */
+		public function init() {
+			if ( function_exists( 'et_custom_posts_per_page' ) && ! is_admin() ) {
+				add_filter( 'parse_query', array( $this, 'remove_et_custom_posts_per_page' ), 100 );
+			}
 
-            add_action('wp_head', array($this, 'fix_et_sidebar_style'));
-        }
+			add_action( 'wp_head', array( $this, 'fix_et_sidebar_style' ) );
+		}
 
-        /**
-         * Remove Elegant Themes' custom posts per page.
-         *
-         * Applies to ALL themes by Elegant Themes, not just Divi and Divi-based themes
-         *
-         * @see et_custom_posts_per_page()
-         *
-         * @param WP_Query $query
-         */
-        public function remove_et_custom_posts_per_page($query) {
-            if ($query->tribe_is_event_query) {
-                remove_action('pre_get_posts', 'et_custom_posts_per_page');
-            }
-        }
+		/**
+		 * Remove Elegant Themes' custom posts per page.
+		 *
+		 * Applies to ALL themes by Elegant Themes, not just Divi and Divi-based themes
+		 *
+		 * @see et_custom_posts_per_page()
+		 *
+		 * @param WP_Query $query
+		 */
+		public function remove_et_custom_posts_per_page( $query ) {
+			if ( $query->tribe_is_event_query ) {
+				remove_action( 'pre_get_posts', 'et_custom_posts_per_page' );
+			}
+		}
 
-        public function fix_et_sidebar_style() {
-            ?>
-            <style type="text/css" id="tribe_ext_fix_et_sidebar_style">
-                .entry-content thead th, .entry-content tr th, .entry-content tr td {
-                    padding-left: 0;
-                    padding-right: 0;
-                }
-                .et_pb_widget.tribe_mini_calendar_widget {
-                    width: unset !important;
-                }
-                .et_pb_column_1_4 .et_pb_widget.tribe_mini_calendar_widget .list-date {
-                    width: 20%;
-                }
-                .et_pb_column_1_4 .et_pb_widget.tribe_mini_calendar_widget .list-info {
-                    width: 75%;
-                }
-                .et_pb_widget_area .et_pb_widget .tribe-events-present a {
-                    color: #fff;
-                }
-            </style>
-            <?php
-        }
+		public function fix_et_sidebar_style() {
+			?>
+			<style type="text/css" id="tribe_ext_fix_et_sidebar_style">
+				.entry-content thead th, .entry-content tr th, .entry-content tr td {
+					padding-left: 0;
+					padding-right: 0;
+				}
+				.et_pb_widget.tribe_mini_calendar_widget {
+					width: unset !important;
+				}
+				.et_pb_column_1_4 .et_pb_widget.tribe_mini_calendar_widget .list-date {
+					width: 20%;
+				}
+				.et_pb_column_1_4 .et_pb_widget.tribe_mini_calendar_widget .list-info {
+					width: 75%;
+				}
+				.et_pb_widget_area .et_pb_widget .tribe-events-present a {
+					color: #fff;
+				}
+			</style>
+			<?php
+		}
 
-    }  // end class
+	}  // end class
 } // end if class_exists check
