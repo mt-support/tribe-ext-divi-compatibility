@@ -5,7 +5,7 @@ Tags: events, calendar
 Requires at least: 4.5
 Tested up to: 4.9.6
 Requires PHP: 5.4
-Stable tag: 1.1.0
+Stable tag: 1.2.0
 License: GPL version 3 or any later version
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -34,6 +34,16 @@ Please visit our [extension library](https://theeventscalendar.com/extensions/) 
 We're always interested in your feedback and our [premium forums](https://theeventscalendar.com/support-forums/) are the best place to flag any issues. Do note, however, that the degree of support we provide for extensions like this one tends to be very limited.
 
 == Changelog ==
+
+= 1.2.0 2018-06-18 =
+
+* Made further adjustments to the Mini Calendar Widget CSS
+* Fixed the cell padding of the mini calendar grid
+* Further increased the width of the day / date box in the list to keep day name in one line even for Monday
+* Adjusted the width of the event info box in the list to keep day name in one line
+* Adjusted the margin and padding of event title in list
+* Adjusted the padding of the day name in the list
+* Adjusted the line-height of event duration
 
 = 1.1.0 2018-06-13 =
 
