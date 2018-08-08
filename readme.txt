@@ -35,7 +35,7 @@ We're always interested in your feedback and our [premium forums](https://theeve
 
 == Changelog ==
 
-= 1.2.0 2018-06-18 =
+= 1.2.0 2018-08-08 =
 
 * Made further adjustments to the Mini Calendar Widget CSS
 * Fixed the cell padding of the mini calendar grid
@@ -44,6 +44,8 @@ We're always interested in your feedback and our [premium forums](https://theeve
 * Adjusted the margin and padding of event title in list
 * Adjusted the padding of the day name in the list
 * Adjusted the line-height of event duration
+* Fixed the issue where the spinner was always visible when using the Divi Builder plugin
+* Fixed formatting issues of the Mini Calendar widget and the Advanced List Widget caused by the Divi Builder plugin overriding some styling
 
 = 1.1.0 2018-06-13 =
 
