@@ -40,7 +40,7 @@ if (
 		public function construct() {
 			$this->add_required_plugin( 'Tribe__Events__Main' );
 			$this->set_url( 'https://theeventscalendar.com/extensions/elegant-themes-divi-theme-compatibility/' );
-			$this->set_version( '1.1.0' );
+			$this->set_version( '1.2.0' );
 		}
 
 		/**
@@ -70,51 +70,53 @@ if (
 		}
 
 		/**
-		 *  1. Fixing the cell padding of the mini calendar grid
-		 *  2. Increasing the width of the day / date box in the list to keep day name in one line
-		 *  3. Adjusting the width of the event info box in the list to keep day name in one line
-		 *  4. Setting today's date to white to make it visible (only effective if today has an event)
-		 *  5. Adjusting the margin and padding of event title in list
-		 *  6. Adjusting the padding of the day name in the list
-		 *  7. Adjusting the line-height of event duration
 		 */
 		public function fix_et_sidebar_style() {
-			?>
-			<style type="text/css" id="tribe_ext_fix_et_sidebar_style">
-				#main-content .tribe_mini_calendar_widget th,
-				#main-content .tribe_mini_calendar_widget td {
-					padding: 2px 0;
-				}
-
-				.et_pb_widget.tribe_mini_calendar_widget .list-date {
-					width: 22%;
-				}
-
-				.et_pb_widget.tribe_mini_calendar_widget .list-info {
-					width: 73%;
-				}
-
-				.et_pb_widget_area .et_pb_widget .tribe-events-present a {
-					color: #fff;
-				}
-
-				#main-content .tribe-mini-calendar-event .list-info h2,
-				#main-footer .tribe-mini-calendar-event .list-info h2 {
-					padding-bottom: 0;
-					margin-bottom: 5px;
-				}
-
-				.et_pb_widget.tribe_mini_calendar_widget .list-dayname {
-					padding-top: 0;
-					padding-bottom: 0;
-				}
-
-				#main-content .et_pb_widget.tribe_mini_calendar_widget .tribe-events-duration,
-				#main-footer .et_pb_widget.tribe_mini_calendar_widget .tribe-events-duration {
-					line-height: 1.2;
-				}
-			</style>
-			<?php
+		    
+		    // Checking if Divi is the active / parent theme and if ECPro is active
+		    if ( get_template() == 'Divi' && class_exists( 'Tribe__Events__Pro__Main', false ) ) {
+			    ?>
+                <style type="text/css" id="tribe_ext_fix_et_sidebar_style">
+                    /* Fixing the cell padding of the mini calendar grid */
+                    #main-content .tribe_mini_calendar_widget th,
+                    #main-content .tribe_mini_calendar_widget td {
+                        padding: 2px 0;
+                    }
+                    /* Increasing the width of the day / date box in the list to keep day name in one line */
+                    .et_pb_widget.tribe_mini_calendar_widget .list-date,  /* Mini calendar widget */
+                    .et_pb_widget.tribe-events-adv-list-widget .list-date /* Advanced list widget */
+                    {
+                        width: 22%;
+                    }
+                    /* Adjusting the width of the event info box in the list to keep day name in one line */
+                    .et_pb_widget.tribe_mini_calendar_widget .list-info,  /* Mini calendar widget */
+                    .et_pb_widget.tribe-events-adv-list-widget .list-info /* Advanced list widget */
+                    {
+                        width: 73%;
+                    }
+                    /* Setting today's date to white to make it visible (only effective if today has an event) */
+                    .et_pb_widget_area .et_pb_widget .tribe-events-present a {
+                        color: #fff;
+                    }
+                    /* Adjusting the margin and padding of event title in list */
+                    #main-content .tribe-mini-calendar-event .list-info h2,
+                    #main-footer .tribe-mini-calendar-event .list-info h2 {
+                        padding-bottom: 0;
+                        margin-bottom: 5px;
+                    }
+                    /* Adjusting the padding of the day name in the list */
+                    .et_pb_widget.tribe_mini_calendar_widget .list-dayname {
+                        padding-top: 0;
+                        padding-bottom: 0;
+                    }
+                    /* Adjusting the line-height of event duration */
+                    #main-content .et_pb_widget.tribe_mini_calendar_widget .tribe-events-duration,
+                    #main-footer .et_pb_widget.tribe_mini_calendar_widget .tribe-events-duration {
+                        line-height: 1.2;
+                    }
+                </style>
+			    <?php
+		    } // if ( get_template() == 'Divi' && class_exists( 'Tribe__Events__Pro__Main', false ) ) {
 		}
 
 	} // end class
