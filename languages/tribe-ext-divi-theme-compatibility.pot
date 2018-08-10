@@ -1,0 +1,55 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"Project-Id-Version: The Events Calendar Extension: Divi Theme Compatibility\n"
+"POT-Creation-Date: 2018-08-09 21:50-0500\n"
+"PO-Revision-Date: 2018-08-09 21:50-0500\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.6\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
+"X-Poedit-WPHeader: tribe-ext-divi-theme-compatibility.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+
+#: tribe-ext-divi-theme-compatibility.php:62
+#, php-format
+msgid ""
+"%s requires PHP version %s or newer to work. Please contact your website "
+"host and inquire about updating PHP."
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "The Events Calendar Extension: Divi Theme Compatibility"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid ""
+"https://theeventscalendar.com/extensions/elegant-themes-divi-theme-"
+"compatibility/"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"Makes The Events Calendar compatible with Elegant Themes' Divi theme and "
+"builder plugin and Divi-based themes (e.g. Extra theme). The "
+"posts_per_page / pagination fix should also work for all their themes, even "
+"if not Divi-based."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Modern Tribe, Inc."
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://m.tri.be/1971"
+msgstr ""

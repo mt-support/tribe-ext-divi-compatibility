@@ -1,19 +1,19 @@
 === The Events Calendar Extension: Divi Theme Compatibility ===
 Contributors: ModernTribe
 Donate link: http://m.tri.be/29
-Tags: events, calendar
+Tags: events, calendar, divi
 Requires at least: 4.5
 Tested up to: 4.9.6
-Requires PHP: 5.4
-Stable tag: 1.1.0
+Requires PHP: 5.6
+Stable tag: 1.2.0
 License: GPL version 3 or any later version
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
-Makes The Events Calendar compatible with Elegant Themes' Divi theme and Divi-based themes (e.g. Extra theme).
+Makes The Events Calendar compatible with Elegant Themes' Divi theme and builder plugin and Divi-based themes (e.g. Extra theme).
 
 == Description ==
 
-Makes The Events Calendar compatible with Elegant Themes' Divi theme and Divi-based themes (e.g. Extra theme). The posts_per_page / pagination fix should also work for all their themes, even if not Divi-based.
+Makes The Events Calendar compatible with Elegant Themes' Divi theme and builder plugin and Divi-based themes (e.g. Extra theme). The posts_per_page / pagination fix should also work for all their themes, even if not Divi-based.
 
 == Installation ==
 
@@ -35,10 +35,22 @@ We're always interested in your feedback and our [premium forums](https://theeve
 
 == Changelog ==
 
+= 1.2.0 2018-08-10 =
+
+* Made further adjustments to the Mini Calendar widget CSS
+* Fixed the cell padding of the mini calendar grid
+* Further increased the width of the day / date box in the list to keep day name in one line even for Monday
+* Adjusted the width of the event info box in the list to keep day name in one line
+* Adjusted the margin and padding of event title in list
+* Adjusted the padding of the day name in the list
+* Adjusted the line-height of event duration
+* Fixed the issue where the spinner was always visible when using the Divi Builder plugin
+* Fixed formatting issues of the Mini Calendar widget and the Advanced List Widget caused by the Divi Builder plugin overriding some styling
+
 = 1.1.0 2018-06-13 =
 
-* Fixed styling of mini calendar widget when used in a sidebar
-* Fixed the color of the present day date in the mini calendar widget
+* Fixed styling of Mini Calendar widget when used in a sidebar
+* Fixed the color of the present day date in the Mini Calendar widget
 * Adjusted the width of the day/date box (and event info box) in the sidebar so the day doesn't wrap when using a narrow sidebar
 * Updated extension template
 * Added readme.txt
