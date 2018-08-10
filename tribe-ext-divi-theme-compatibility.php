@@ -46,6 +46,9 @@ if (
 		 * Extension initialization and hooks.
 		 */
 		public function init() {
+			// Load plugin textdomain
+			load_plugin_textdomain( 'tribe-ext-divi-theme-compatibility', false, basename( dirname( __FILE__ ) ) . '/languages/' );
+
 			/**
 			 * All extensions require PHP 5.6+, following along with https://theeventscalendar.com/knowledgebase/php-version-requirement-changes/
 			 */
