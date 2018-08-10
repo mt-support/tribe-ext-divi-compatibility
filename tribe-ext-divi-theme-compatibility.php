@@ -96,10 +96,10 @@ if (
 		/**
 		 */
 		public function fix_et_sidebar_style() {
-			// Checking if ECPro is active
+			// Checking if Events Calendar PRO is active
 			if ( class_exists( 'Tribe__Events__Pro__Main', false ) ) {
 
-				// Checking if Divi is the active / parent theme and if ECPro is active
+				// Checking if Divi is the active / parent theme and if Events Calendar PRO is active
 				if ( 'Divi' == get_template() ) {
 					?>
 					<style type="text/css" id="tribe_ext_fix_et_sidebar_style">
