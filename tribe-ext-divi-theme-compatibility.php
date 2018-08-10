@@ -86,7 +86,7 @@ if (
 				if ( is_plugin_active( 'divi-builder/divi-builder.php' ) ) {
 					add_action( 'wp_head', array( $this, 'fix_db_widget_styles' ) );
 				}
-			} // if ( class_exists( 'Tribe__Events__Pro__Main', false ) )
+			} // Checking if Events Calendar PRO is active
 		}
 
 		/**
