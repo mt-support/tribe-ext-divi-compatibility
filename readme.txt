@@ -1,4 +1,4 @@
-=== The Events Calendar Extension: Divi Theme Compatibility ===
+=== The Events Calendar Extension: Divi Compatibility ===
 Contributors: ModernTribe
 Donate link: http://m.tri.be/29
 Tags: events, calendar, divi
