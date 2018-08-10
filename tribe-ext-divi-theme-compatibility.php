@@ -58,13 +58,9 @@ if (
 					&& current_user_can( 'activate_plugins' )
 				) {
 					$message = '<p>';
-
 					$message .= sprintf( __( '%s requires PHP version %s or newer to work. Please contact your website host and inquire about updating PHP.', 'tribe-ext-divi-theme-compatibility' ), $this->get_name(), $php_required_version );
-
 					$message .= sprintf( ' <a href="%1$s">%1$s</a>', 'https://wordpress.org/about/requirements/' );
-
 					$message .= '</p>';
-
 					tribe_notice( $this->get_name(), $message, 'type=error' );
 				}
 
@@ -75,7 +71,8 @@ if (
 				add_filter( 'parse_query', array( $this, 'remove_et_custom_posts_per_page' ), 100 );
 			}
 
-			add_action( 'wp_head', array( $this, 'fix_et_sidebar_style' ) );
+			add_action( 'wp_head', array( $this, 'fix_divi_widget_styles' ) );
+			add_action( 'wp_head', array( $this, 'fix_db_widget_styles' ) );
 		}
 
 		/**
@@ -94,12 +91,16 @@ if (
 		}
 
 		/**
+		 * Fix the styling of the Calendar widget and the Advanced List widget
+		 *
+		 * Applies to the Divi theme when Events Calendar PRO is active
 		 */
-		public function fix_et_sidebar_style() {
+		public function fix_divi_widget_styles() {
+
 			// Checking if Events Calendar PRO is active
 			if ( class_exists( 'Tribe__Events__Pro__Main', false ) ) {
 
-				// Checking if Divi is the active / parent theme and if Events Calendar PRO is active
+				// Checking if Divi is the active / parent theme
 				if ( 'Divi' == get_template() ) {
 					?>
 					<style type="text/css" id="tribe_ext_fix_et_sidebar_style">
@@ -108,7 +109,6 @@ if (
 						#main-content .tribe_mini_calendar_widget td {
 							padding: 2px 0;
 						}
-
 						/* Increasing the width of the day / date box in the list to keep day name in one line */
 						.et_pb_widget.tribe_mini_calendar_widget .list-date, /* Mini calendar widget */
 						.et_pb_widget.tribe-events-adv-list-widget .list-date /* Advanced list widget */
@@ -116,38 +116,32 @@ if (
 							width: 22%;
 							max-width: 45px;
 						}
-
 						/* Adjusting the width of the event info box in the list to keep day name in one line */
 						.et_pb_widget.tribe_mini_calendar_widget .list-info, /* Mini calendar widget */
 						.et_pb_widget.tribe-events-adv-list-widget .list-info /* Advanced list widget */
 						{
 							width: 73%;
 						}
-
 						/* Setting today's date to white to make it visible (only effective if today has an event) */
 						.et_pb_widget_area .et_pb_widget .tribe-events-present a {
 							color: #fff;
 						}
-
 						/* Adjusting the margin and padding of event title in list */
 						#main-content .tribe-mini-calendar-event .list-info h2,
 						#main-footer .tribe-mini-calendar-event .list-info h2 {
 							padding-bottom: 0;
 							margin-bottom: 5px;
 						}
-
 						/* Adjusting the padding of the day name in the list */
 						.et_pb_widget.tribe_mini_calendar_widget .list-dayname {
 							padding-top: 0;
 							padding-bottom: 0;
 						}
-
 						/* Adjusting the line-height of event duration */
 						#main-content .et_pb_widget.tribe_mini_calendar_widget .tribe-events-duration,
 						#main-footer .et_pb_widget.tribe_mini_calendar_widget .tribe-events-duration {
 							line-height: 1.2;
 						}
-
 						/* Fixing datepicker z-index on shortcode page */
 						.et_fixed_nav .datepicker-orient-top {
 							z-index: 99999 !important;
@@ -155,11 +149,21 @@ if (
 					</style>
 					<?php
 				} // if ( 'Divi' == get_template() )
+			} // if ( class_exists( 'Tribe__Events__Pro__Main', false ) )
+		} // public function fix_divi_widget_styles()
 
-				/**
-				 * Fixes for when the Divi Builder plugin is used
-				 * Widgets are on a page in a sidebar module
-				 */
+		/**
+		 * Fix the styling of the Calendar widget and the Advanced List widget
+		 * when widgets are on a page in a sidebar module
+		 *
+		 * Applies to the Divi Builder Plugin when Events Calendar PRO is active
+		 */
+		public function fix_db_widget_styles() {
+
+			// Checking if Events Calendar PRO is active
+			if ( class_exists( 'Tribe__Events__Pro__Main', false ) ) {
+
+				// Checking if Divi Builder Plugin is active
 				if ( is_plugin_active( 'divi-builder/divi-builder.php' ) ) {
 					?>
 					<style type="text/css" id="tribe_ext_fix_et_pb_style">
@@ -167,35 +171,29 @@ if (
 						.et-db #et-boc .et_pb_module a.tribe-mini-calendar-nav-link {
 							padding: 5px;
 						}
-
 						/* Hiding the spinner and adjusting its position */
 						.et-db #et-boc .et_pb_module img#ajax-loading-mini {
 							display: none;
 							margin: -8px 0 0 -8px;
 						}
-
 						/* Fixing the padding in the grid for day with no events */
 						#et-boc span.tribe-mini-calendar-no-event {
 							padding: 5px 5px 15px 5px;
 						}
-
 						/* Fixing the padding in the grid for day with events */
 						.et-db #et-boc .et_pb_module a.tribe-mini-calendar-day-link {
 							padding: 5px 0 15px 0;
 						}
-
 						/* Fixing the color of today's date in the grid */
 						.et-db #et-boc .et_pb_module .tribe-events-present a.tribe-mini-calendar-day-link {
 							color: #fff;
 						}
-
 						/* Fixing the cell padding of the mini calendar grid */
 						.widget .tribe-mini-calendar th,
 						.widget .tribe-mini-calendar td {
 							padding-right: 0;
 							padding-left: 0;
 						}
-
 						/**
 						 * The Divi Builder overrides a lot of the styling of the widgets.
 						 * This section resets the styling of the event list in the Mini Calendar
@@ -207,24 +205,20 @@ if (
 							margin: 0 0 .25rem;
 							padding: 0;
 						}
-
 						#et-box .et_builder_inner_content div.tribe-mini-calendar-event.first {
 							margin-top: 10px;
 						}
-
 						#et-boc .et_builder_inner_content div.tribe-mini-calendar-event {
 							padding-bottom: 5px;
 							margin-bottom: 5px;
 							border-bottom: 1px dotted #2f2f2f;
 						}
-
 						#et-boc .et_builder_inner_content .tribe-mini-calendar-event div.list-info {
 							display: inline;
 							float: left;
 							margin: 10px 0;
 							width: 80%;
 						}
-
 						#et-boc .et_builder_inner_content .tribe-mini-calendar-event .list-info h2 {
 							font-size: 14px;
 							font-weight: bold;
@@ -233,11 +227,9 @@ if (
 							margin-bottom: 10px;
 							padding-bottom: 0px;
 						}
-
 						#et-boc .et_builder_inner_content .tribe-mini-calendar-event .list-info h2 a {
 							font-weight: bold;
 						}
-
 						#et-boc .et_builder_inner_content div.tribe-mini-calendar-event .list-date {
 							float: left;
 							overflow: hidden;
@@ -252,7 +244,6 @@ if (
 							-moz-box-sizing: border-box;
 							-webkit-box-sizing: border-box;
 						}
-
 						#et-boc .et_builder_inner_content .tribe-mini-calendar-event .list-date span.list-dayname {
 							background: #fff;
 							color: #666;
@@ -263,7 +254,6 @@ if (
 							text-align: center;
 							text-transform: uppercase;
 						}
-
 						#et-boc .et_builder_inner_content .tribe-mini-calendar-event .list-date span.list-daynumber {
 							color: white;
 							display: block;
@@ -276,7 +266,7 @@ if (
 					<?php
 				} // if ( is_plugin_active( 'divi-builder/divi-builder.php' ) )
 			} // if ( class_exists( 'Tribe__Events__Pro__Main', false ) )
-		} // public function fix_et_sidebar_style()
+		} // public function fix_db_widget_styles()
 
 	} // end class
 } // end if class_exists check
