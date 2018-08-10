@@ -1,11 +1,11 @@
 <?php
 /**
- * Plugin Name:       The Events Calendar Extension: Divi Theme Compatibility
+ * Plugin Name:       The Events Calendar Extension: Divi Compatibility
  * Plugin URI:        https://theeventscalendar.com/extensions/elegant-themes-divi-theme-compatibility/
- * GitHub Plugin URI: https://github.com/mt-support/tribe-ext-divi-theme-compatibility
+ * GitHub Plugin URI: https://github.com/mt-support/tribe-ext-divi-compatibility
  * Description:       Makes The Events Calendar compatible with Elegant Themes' Divi theme and builder plugin and Divi-based themes (e.g. Extra theme). The posts_per_page / pagination fix should also work for all their themes, even if not Divi-based.
  * Version:           1.2.0
- * Extension Class:   Tribe__Extension__Divi_Theme_Compatibility
+ * Extension Class:   Tribe__Extension__Divi_Compatibility
  * Author:            Modern Tribe, Inc.
  * Author URI:        http://m.tri.be/1971
  * License:           GPL version 3 or any later version
@@ -30,7 +30,7 @@ if (
 	/**
 	 * Extension main class, class begins loading on init() function.
 	 */
-	class Tribe__Extension__Divi_Theme_Compatibility extends Tribe__Extension {
+	class Tribe__Extension__Divi_Compatibility extends Tribe__Extension {
 		/**
 		 * Setup the Extension's properties.
 		 *
@@ -45,7 +45,7 @@ if (
 		 */
 		public function init() {
 			// Load plugin textdomain
-			load_plugin_textdomain( 'tribe-ext-divi-theme-compatibility', false, basename( dirname( __FILE__ ) ) . '/languages/' );
+			load_plugin_textdomain( 'tribe-ext-divi-compatibility', false, basename( dirname( __FILE__ ) ) . '/languages/' );
 
 			/**
 			 * All extensions require PHP 5.6+, following along with https://theeventscalendar.com/knowledgebase/php-version-requirement-changes/
@@ -58,7 +58,7 @@ if (
 					&& current_user_can( 'activate_plugins' )
 				) {
 					$message = '<p>';
-					$message .= sprintf( __( '%s requires PHP version %s or newer to work. Please contact your website host and inquire about updating PHP.', 'tribe-ext-divi-theme-compatibility' ), $this->get_name(), $php_required_version );
+					$message .= sprintf( __( '%s requires PHP version %s or newer to work. Please contact your website host and inquire about updating PHP.', 'tribe-ext-divi-compatibility' ), $this->get_name(), $php_required_version );
 					$message .= sprintf( ' <a href="%1$s">%1$s</a>', 'https://wordpress.org/about/requirements/' );
 					$message .= '</p>';
 					tribe_notice( $this->get_name(), $message, 'type=error' );
