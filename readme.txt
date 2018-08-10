@@ -37,7 +37,7 @@ We're always interested in your feedback and our [premium forums](https://theeve
 
 = 1.2.0 2018-08-08 =
 
-* Made further adjustments to the Mini Calendar Widget CSS
+* Made further adjustments to the Mini Calendar widget CSS
 * Fixed the cell padding of the mini calendar grid
 * Further increased the width of the day / date box in the list to keep day name in one line even for Monday
 * Adjusted the width of the event info box in the list to keep day name in one line
@@ -49,8 +49,8 @@ We're always interested in your feedback and our [premium forums](https://theeve
 
 = 1.1.0 2018-06-13 =
 
-* Fixed styling of mini calendar widget when used in a sidebar
-* Fixed the color of the present day date in the mini calendar widget
+* Fixed styling of Mini Calendar widget when used in a sidebar
+* Fixed the color of the present day date in the Mini Calendar widget
 * Adjusted the width of the day/date box (and event info box) in the sidebar so the day doesn't wrap when using a narrow sidebar
 * Updated extension template
 * Added readme.txt
