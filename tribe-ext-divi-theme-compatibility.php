@@ -38,8 +38,6 @@ if (
 		 */
 		public function construct() {
 			$this->add_required_plugin( 'Tribe__Events__Main' );
-			$this->set_url( 'https://theeventscalendar.com/extensions/elegant-themes-divi-theme-compatibility/' );
-			$this->set_version( '1.2.0' );
 		}
 
 		/**
@@ -98,12 +96,11 @@ if (
 		/**
 		 */
 		public function fix_et_sidebar_style() {
-
 			// Checking if ECPro is active
 			if ( class_exists( 'Tribe__Events__Pro__Main', false ) ) {
 
 				// Checking if Divi is the active / parent theme and if ECPro is active
-				if ( get_template() == 'Divi' ) {
+				if ( 'Divi' == get_template() ) {
 					?>
                     <style type="text/css" id="tribe_ext_fix_et_sidebar_style">
                         /* Fixing the cell padding of the mini calendar grid */
@@ -157,7 +154,7 @@ if (
                         }
                     </style>
 					<?php
-				} // if ( get_template() == 'Divi' )
+				} // if ( 'Divi' == get_template() )
 
 				/**
 				 * Fixes for when the Divi Builder plugin is used
