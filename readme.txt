@@ -36,6 +36,7 @@ We're always interested in your feedback and our [premium forums](https://theeve
 == Changelog ==
 
 = 1.2.1 2018-08-15 =
+
 * Fixed a bug due to which the post per page fix stopped working
 
 = 1.2.0 2018-08-10 =
