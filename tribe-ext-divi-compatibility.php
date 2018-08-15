@@ -4,7 +4,7 @@
  * Plugin URI:        https://theeventscalendar.com/extensions/elegant-themes-divi-theme-compatibility/
  * GitHub Plugin URI: https://github.com/mt-support/tribe-ext-divi-compatibility
  * Description:       Makes The Events Calendar compatible with Elegant Themes' Divi theme and builder plugin and Divi-based themes (e.g. Extra theme). The posts_per_page / pagination fix should also work for all their themes, even if not Divi-based.
- * Version:           1.2.0
+ * Version:           1.2.1
  * Extension Class:   Tribe__Extension__Divi_Compatibility
  * Author:            Modern Tribe, Inc.
  * Author URI:        http://m.tri.be/1971
@@ -67,10 +67,7 @@ if (
 				return;
 			}
 
-			if (
-				! is_admin()
-				&& function_exists( 'et_custom_posts_per_page' )
-			) {
+			if ( ! is_admin() ) {
 				add_filter( 'parse_query', array( $this, 'remove_et_custom_posts_per_page' ), 100 );
 			}
 
