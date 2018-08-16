@@ -74,9 +74,9 @@ if (
 			 *
 			 * @see et_custom_posts_per_page()
 			 */
-            add_action( 'tribe_events_parse_query', function() {
-                remove_action( 'pre_get_posts', 'et_custom_posts_per_page' );
-            }, 100 );
+			add_action( 'tribe_events_parse_query', function () {
+				remove_action( 'pre_get_posts', 'et_custom_posts_per_page' );
+			}, 100 );
 
 			// Checking if Events Calendar PRO is active
 			if ( Tribe__Dependency::instance()->is_plugin_active( 'Tribe__Events__Pro__Main' ) ) {
