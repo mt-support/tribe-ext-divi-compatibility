@@ -4,7 +4,7 @@
  * Plugin URI:        https://theeventscalendar.com/extensions/elegant-themes-divi-theme-compatibility/
  * GitHub Plugin URI: https://github.com/mt-support/tribe-ext-divi-compatibility
  * Description:       Makes The Events Calendar compatible with Elegant Themes' Divi theme and builder plugin and Divi-based themes (e.g. Extra theme). The posts_per_page / pagination fix should also work for all their themes, even if not Divi-based.
- * Version:           1.2.0
+ * Version:           1.2.1
  * Extension Class:   Tribe__Extension__Divi_Compatibility
  * Author:            Modern Tribe, Inc.
  * Author URI:        http://m.tri.be/1971
@@ -67,12 +67,16 @@ if (
 				return;
 			}
 
-			if (
-				! is_admin()
-				&& function_exists( 'et_custom_posts_per_page' )
-			) {
-				add_filter( 'parse_query', array( $this, 'remove_et_custom_posts_per_page' ), 100 );
-			}
+			/**
+			 * Remove Elegant Themes' custom posts_per_page.
+			 *
+			 * Applies to ALL themes by Elegant Themes, not just Divi and Divi-based themes
+			 *
+			 * @see et_custom_posts_per_page()
+			 */
+			add_action( 'tribe_events_parse_query', function () {
+				remove_action( 'pre_get_posts', 'et_custom_posts_per_page' );
+			}, 100 );
 
 			// Checking if Events Calendar PRO is active
 			if ( Tribe__Dependency::instance()->is_plugin_active( 'Tribe__Events__Pro__Main' ) ) {
@@ -89,21 +93,6 @@ if (
 					add_action( 'wp_head', array( $this, 'fix_db_widget_styles' ) );
 				}
 			} // Checking if Events Calendar PRO is active
-		}
-
-		/**
-		 * Remove Elegant Themes' custom posts per page.
-		 *
-		 * Applies to ALL themes by Elegant Themes, not just Divi and Divi-based themes
-		 *
-		 * @see et_custom_posts_per_page()
-		 *
-		 * @param WP_Query $query
-		 */
-		public function remove_et_custom_posts_per_page( $query ) {
-			if ( $query->tribe_is_event_query ) {
-				remove_action( 'pre_get_posts', 'et_custom_posts_per_page' );
-			}
 		}
 
 		/**
