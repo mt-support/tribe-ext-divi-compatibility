@@ -67,9 +67,16 @@ if (
 				return;
 			}
 
-			if ( ! is_admin() ) {
-				add_filter( 'parse_query', array( $this, 'remove_et_custom_posts_per_page' ), 100 );
-			}
+			/**
+			 * Remove Elegant Themes' custom posts_per_page.
+			 *
+			 * Applies to ALL themes by Elegant Themes, not just Divi and Divi-based themes
+			 *
+			 * @see et_custom_posts_per_page()
+			 */
+            add_action( 'tribe_events_parse_query', function() {
+                remove_action( 'pre_get_posts', 'et_custom_posts_per_page' );
+            }, 100 );
 
 			// Checking if Events Calendar PRO is active
 			if ( Tribe__Dependency::instance()->is_plugin_active( 'Tribe__Events__Pro__Main' ) ) {
@@ -86,21 +93,6 @@ if (
 					add_action( 'wp_head', array( $this, 'fix_db_widget_styles' ) );
 				}
 			} // Checking if Events Calendar PRO is active
-		}
-
-		/**
-		 * Remove Elegant Themes' custom posts per page.
-		 *
-		 * Applies to ALL themes by Elegant Themes, not just Divi and Divi-based themes
-		 *
-		 * @see et_custom_posts_per_page()
-		 *
-		 * @param WP_Query $query
-		 */
-		public function remove_et_custom_posts_per_page( $query ) {
-			if ( $query->tribe_is_event_query ) {
-				remove_action( 'pre_get_posts', 'et_custom_posts_per_page' );
-			}
 		}
 
 		/**
