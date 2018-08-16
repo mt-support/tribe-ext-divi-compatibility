@@ -37,7 +37,7 @@ We're always interested in your feedback and our [premium forums](https://theeve
 
 = 1.2.1 2018-08-15 =
 
-* Fixed a bug due to which the post per page fix stopped working
+* Fix - The post per page fix works again, after being broken in 1.2.0
 
 = 1.2.0 2018-08-10 =
 
